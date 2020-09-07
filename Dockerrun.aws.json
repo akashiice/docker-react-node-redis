@@ -1,0 +1,37 @@
+{
+
+    "AWSEBDockerVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "akashiice/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "akashiice/multi-server",
+            "hostname": "server",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "akashiice/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "akashiice/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}

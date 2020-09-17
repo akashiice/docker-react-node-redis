@@ -16,6 +16,11 @@ after_success:
     - docker build -t akashiice/multi-worker ./worker
     # Log into docker cli
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # take those images and push them to docker hub
+    - docker push akashiice/multi-client
+    - docker push akashiice/multi-nginx
+    - docker push akashiice/multi-server
+    - docker push akashiice/multi-worker
 
 deploy:
     provider: elasticbeanstalk

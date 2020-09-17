@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
     - docker
@@ -15,4 +16,5 @@ after_success:
     - docker build -t akashiice/multi-worker ./worker
     # Log into docker cli
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
     
